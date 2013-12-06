@@ -14,7 +14,12 @@ var server = http.createServer(function(request, response) {
 			response.end();
 		} else {
 			response.writeHead(200);
-			response.end(data);
+			if (filename=="/index.html"){
+				var temp = 20;
+				response.end(data.toString().replace("TEMP",temp));
+			} else {
+				response.end(data);
+			}
 		}
 	});
 });

@@ -1,0 +1,10 @@
+{
+  "name": "rpi-thermometer",  
+  "version": "0.1.0",
+  "author": "Igor Kulman <igor@kulman.sk>",
+  "description": "WebUI for a Raspberry Pi thermometer writen in Node.js, measurring the temperature in the room.",
+  "private": true,
+  "dependencies": {
+    "express": "3.x"
+  }
+}

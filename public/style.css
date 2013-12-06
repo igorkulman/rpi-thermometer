@@ -1,0 +1,118 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}                  
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section { 
+    display:block;
+}
+
+nav ul { list-style:none; }
+
+
+body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
+
+
+body, select, input, textarea { 
+  color: #444;  
+}
+
+
+h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+
+/* always force a scrollbar in non-IE */ 
+html { overflow-y: scroll; }
+
+body {
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+header {
+    float: left;
+    margin-left: -90px;
+margin-top: 10%;
+}
+
+h1 { font-size: 9em;
+    margin-bottom: -28px;
+}
+h2 { font-size: 22pt;
+    text-transform: uppercase;
+    color: #ff3816;
+}
+h1, h2 { margin-left: 50px;}
+
+
+
+
+
+
+html {
+    background:-webkit-radial-gradient(circle, #fcee92 0%, #ebcf12 100%);
+    height:100%;
+    width:100%;
+}
+/* Thermometer column and text */
+ .thermometer {
+    margin:150px 1 0 50%;
+    left:-15px;
+    top:-100px;
+    width:22px;
+    height:150px;
+    display:block;
+    font:bold 14px/152px helvetica, arial, sans-serif;
+    text-indent: 36px;
+    background: -webkit-linear-gradient(top, #fff 0%, #fff 50%, #db3f02 50%, #db3f02 100%);
+    border-radius:22px 22px 0 0;
+    border:5px solid #4a1c03;
+    border-bottom:none;
+    position:absolute;
+    box-shadow:inset 0 0 0 4px #fff;
+    color:#4a1c03;
+}
+/* Thermometer Bulb */
+ .thermometer:before {
+    content:' ';
+    width:44px;
+    height:44px;
+    display:block;
+    position:absolute;
+    top:142px;
+    left:-16px;
+    z-index:-1;
+    /* Place the bulb under the column */
+    background:#db3f02;
+    border-radius:44px;
+    border:5px solid #4a1c03;
+    box-shadow:inset 0 0 0 4px #fff;
+}
+/* This piece here connects the column with the bulb */
+ .thermometer:after {
+    content:' ';
+    width:14px;
+    height:7px;
+    display:block;
+    position:absolute;
+    top:146px;
+    left:4px;
+    background:#db3f02;
+}

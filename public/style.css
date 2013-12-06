@@ -24,7 +24,6 @@ footer, header, hgroup, menu, nav, section {
     display:block;
 }
 
-nav ul { list-style:none; }
 
 
 body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to preserve specificity */
@@ -58,6 +57,7 @@ h1 { font-size: 9em;
 h2 { font-size: 22pt;
     text-transform: uppercase;
     color: #ff3816;
+padding-left:5px;
 }
 h1, h2 { margin-left: 50px;}
 

@@ -8,4 +8,4 @@ xmlhttp.onreadystatechange = function() {
 setInterval(function() {
                     xmlhttp.open("GET", "/temperature", true);
                     xmlhttp.send();
-                }, 3000);
+                }, 30000);

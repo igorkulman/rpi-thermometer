@@ -3,4 +3,45 @@ WebUI for a Raspberry Pi thermometer
 
 WebUI for a Raspberry Pi thermometer writen in Node.js, measurring the temperature in the room.
 
-The thermometer consists of a DS18B20 temperature sensor and a RRU 4K7 resistor connectet to the GPIO 4 pin on Raspberry PI.
+### Hardware
+
+* Raspberry Pi
+* DS18B20 temperature sensor
+* RRU 4K7 resistor
+
+### Software
+
+* RaspBMC or Raspbian
+* Node.js
+
+### Drivers
+
+* w1-gpio
+* w1-therm
+
+### Usage
+
+First, load the drivers
+
+```bash
+sudo modprobe w1-gpio  
+sudo modprobe w1-therm
+```
+
+then determine the device id of your sensor (28-000004e23e98 in my case) 
+
+```bash
+ls /sys/bus/w1/devices/   
+```
+
+open server.js and set the deviceId variable to your device id
+
+```javascript
+var deviceId="28-000004e23e98";
+```
+
+and run the server
+
+```bash
+node server.js
+```

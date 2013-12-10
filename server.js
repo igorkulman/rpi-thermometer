@@ -14,13 +14,26 @@ app.set('view engine', 'dust');
 app.set('views', __dirname + '/views');
 
 app.get("/", function(request, response){
-        var child = exec("cat ./fake.data", function (error, stdout, stderr) {
+        	getTemperature(function(temp){
+        		response.render('index', {
+		    		temperature: temp
+	     		});
+        	});
+});
+
+app.get("/temperature", function(request, response){
+        	getTemperature(function(temp){
+        		response.send(temp.toString());
+        	});
+});
+
+
+function getTemperature(callback){
+	var child = exec("cat ./fake.data", function (error, stdout, stderr) {
             var tempData = stdout.toString().split('\n')[1];
             var temp = parseInt(tempData.split('=')[1]) / 1000;
-            response.render('index', {
-		    temperature: temp
-	     });
-        });
-});
+           	callback(temp);
+           });
+}
 
 app.listen(8000);

@@ -5,6 +5,6 @@
 <title>Room temperature</title>
 </head>
 <body>
-<span class="thermometer">{temperature}&deg;C</span>
+<span class="thermometer absolute-center">{temperature}&deg;C</span>
 </body>
 </htmL>

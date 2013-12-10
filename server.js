@@ -3,6 +3,8 @@ var fs = require("fs");
 var exec = require("child_process").exec;
 var cons = require('consolidate')
 
+var deviceId="28-000004e23e98";
+
 console.log("Starting");
 
 var app = express();
@@ -29,7 +31,7 @@ app.get("/temperature", function(request, response){
 
 
 function getTemperature(callback){
-	var child = exec("cat ./fake.data", function (error, stdout, stderr) {
+	var child = exec("cat /sys/bus/w1/devices/"+deviceId+"/w1_slave", function (error, stdout, stderr) {
             var tempData = stdout.toString().split('\n')[1];
             var temp = parseInt(tempData.split('=')[1]) / 1000;
            	callback(temp);

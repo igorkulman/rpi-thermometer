@@ -5,15 +5,6 @@
 <title>Room temperature</title>
 </head>
 <body>
-<div id="container">
-    <header>
-        <h1>RPi</h1>
-        <h2>Room temp</h2>
-    </header>
-    
-    <div id="main">
 <span class="thermometer">{temperature}&deg;C</span>
-</div>
-</div>
 </body>
 </htmL>

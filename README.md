@@ -34,7 +34,7 @@ then determine the device id of your sensor (28-000004e23e98 in my case)
 ls /sys/bus/w1/devices/   
 ```
 
-open server.js and set the deviceId variable to your device id
+open config.json and set the deviceId variable to your device id
 
 ```javascript
 var deviceId="28-000004e23e98";

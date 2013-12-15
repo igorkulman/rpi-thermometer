@@ -3,7 +3,7 @@ var exec = require("child_process").exec;
 var cons = require("consolidate");
 var fs = require("fs");
 
-var config = JSON.parse(fs.fs.readFileSync("config.json"));
+var config = JSON.parse(fs.readFileSync("config.json"));
 var deviceId = config.deviceId;
 var port = config.port;
 

@@ -3,6 +3,8 @@ WebUI for a Raspberry Pi thermometer
 
 WebUI for a Raspberry Pi thermometer writen in Node.js, measurring the temperature in the room.
 
+![Raspberry Pi with the sensor](http://www.kulman.sk/data/content/inset_images/page/rpitemp.jpg)
+
 ### Hardware
 
 * Raspberry Pi
@@ -45,3 +47,5 @@ and run the server
 ```bash
 node server.js
 ```
+
+![Raspberry Pi teperature](https://dl.dropboxusercontent.com/u/73642/articles/rpi.png)

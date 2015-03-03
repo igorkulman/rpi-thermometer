@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>
-Raspberry Pi Temperature Logger
+Room Temperature Logger
     </title>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -27,7 +27,7 @@ Raspberry Pi Temperature Logger
     </script>
 </head>
 <body>
-<h1>Raspberry Pi Temperature Logger</h1>
+<h1>Room Temperature Logger</h1>
 <hr>
 <form action="/history" method="GET">
         Show the temperature logs for  

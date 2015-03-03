@@ -1,0 +1,45 @@
+
+
+<html>
+<head>
+    <title>
+Raspberry Pi Temperature Logger
+    </title>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Time', 'Temperature'],
+{data|s}
+
+        ]);
+
+        var options = {
+          title: 'Temperature'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+<h1>Raspberry Pi Temperature Logger</h1>
+<hr>
+<form action="/history" method="GET">
+        Show the temperature logs for  
+        <select name="timeinterval">
+<option value="6" {@if cond="{interval} == 6}"}selected="selected"{/if}>the last 6 hours</option>
+<option value="12" {@if cond="{interval} == 12}"}selected="selected"{/if}>the last 12 hours</option>
+<option value="24" {@if cond="{interval} == 24}"}selected="selected"{/if}>the last 24 hours</option>
+        </select>
+        <input type="submit" value="Display">
+    </form>
+<h2>Temperature Chart</h2>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
+

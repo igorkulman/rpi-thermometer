@@ -45,7 +45,9 @@ app.get("/history", function (request, response) {
             data: rows,
             is24: interval == "24",
 	    is6:  interval == "6",
-            is12: interval == "12"
+            is12: interval == "12",
+            is168: interval == "168",
+            is720: interval == "720"
         });
     });    
     db.close();    

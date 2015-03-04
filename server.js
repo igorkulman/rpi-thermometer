@@ -1,10 +1,10 @@
 var express = require("express");
-mustacheExpress = require('mustache-express');
+var mustacheExpress = require('mustache-express');
 var exec = require("child_process").exec;
 var fs = require("fs");
 var sqlite3 = require("sqlite3").verbose();
-var file = "templog.db";
 
+var file = "templog.db";
 var config = JSON.parse(fs.readFileSync("config.json"));
 var deviceId = config.deviceId;
 var port = config.port;
@@ -41,8 +41,7 @@ app.get("/history", function (request, response) {
     if (interval == undefined){
         interval="24";
     }
-    db.all("SELECT * FROM temps WHERE timestamp>datetime('now','-"+interval+" hours')", function(err, rows) {               
-        response.render("history", {
+    db.all("SELECT * FROM temps WHERE timestamp>datetime('now','-"+interval+" hours')", function(err, rows) {         response.render("history", {
             data: rows,
             interval: interval 
         });
@@ -81,7 +80,6 @@ function ensureDbExists(file){
 
     db.close();
 }
-
 
 function getTemperature(callback) {
     var child = exec("cat /sys/bus/w1/devices/" + deviceId + "/w1_slave", function (error, stdout, stderr) {

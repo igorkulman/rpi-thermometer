@@ -41,13 +41,9 @@ app.get("/history", function (request, response) {
     if (interval == undefined){
         interval="24";
     }
-    var data="";
-    db.all("SELECT * FROM temps WHERE timestamp>datetime('now','-"+interval+" hours')", function(err, rows) {        
-        rows.forEach(function(row) {
-            data=data+"['"+row.timestamp+"',"+row.temp+"],";        
-        });        
+    db.all("SELECT * FROM temps WHERE timestamp>datetime('now','-"+interval+" hours')", function(err, rows) {               
         response.render("history", {
-            data: data,
+            data: rows,
             interval: interval 
         });
     });    

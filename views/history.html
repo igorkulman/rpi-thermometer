@@ -13,7 +13,7 @@ Room Temperature Logger
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Time', 'Temperature'],
-{{{data}}}
+{{#data}}['{{timestamp}}',{{temp}}], {{/data}}
 
         ]);
 

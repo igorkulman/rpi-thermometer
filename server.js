@@ -1,6 +1,6 @@
 var express = require("express");
+mustacheExpress = require('mustache-express');
 var exec = require("child_process").exec;
-var cons = require("consolidate");
 var fs = require("fs");
 var sqlite3 = require("sqlite3").verbose();
 var file = "templog.db";
@@ -12,11 +12,10 @@ var port = config.port;
 console.log("Starting");
 
 var app = express();
-app.engine("dust", cons.dust);
-
+app.engine('html', mustacheExpress()); 
 app.use(app.router);
 app.use(express.static(__dirname + "/public"));
-app.set("view engine", "dust");
+app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 
 app.get("/", function (request, response) {

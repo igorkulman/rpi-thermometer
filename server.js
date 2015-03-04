@@ -43,7 +43,9 @@ app.get("/history", function (request, response) {
     }
     db.all("SELECT * FROM temps WHERE timestamp>datetime('now','-"+interval+" hours')", function(err, rows) {         response.render("history", {
             data: rows,
-            interval: interval 
+            is24: interval == "24",
+	    is6:  interval == "6",
+            is12: interval == "12"
         });
     });    
     db.close();    

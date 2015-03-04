@@ -32,9 +32,9 @@ Room Temperature Logger
 <form action="/history" method="GET">
         Show the temperature logs for  
         <select name="timeinterval">
-<option value="6" {@if cond="{interval} == 6}"}selected="selected"{/if}>the last 6 hours</option>
-<option value="12" {@if cond="{interval} == 12}"}selected="selected"{/if}>the last 12 hours</option>
-<option value="24" {@if cond="{interval} == 24}"}selected="selected"{/if}>the last 24 hours</option>
+<option value="6" {{#is6}}selected="selected"{{/is6}}>the last 6 hours</option>
+<option value="12" {{#is12}}selected="selected"{{/is12}}>the last 12 hours</option>
+<option value="24" {{#is24}}selected="selected"{{/is24}}>the last 24 hours</option>
         </select>
         <input type="submit" value="Display">
     </form>

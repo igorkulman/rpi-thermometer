@@ -21,7 +21,7 @@ WebUI for a Raspberry Pi thermometer writen in Node.js, measurring the temperatu
 * w1-gpio
 * w1-therm
 
-### Usage
+### Thermometer usage
 
 First, load the drivers
 
@@ -48,4 +48,12 @@ and run the server
 node server.js
 ```
 
-![Raspberry Pi teperature](https://dl.dropboxusercontent.com/u/73642/articles/rpi.png)
+![Raspberry Pi temperature](https://dl.dropboxusercontent.com/u/73642/articles/rpi.png)
+
+### Recording and showing temperature
+
+You can use the `/measure` endpoint to measure the current temperature and automatically write it to a sqlite3 db file. I suggest you add it to cron.
+
+If you want to see the recorder temeprature chart, visist the `/history` endpoint.
+
+![Raspbery Pi temperature history](https://dl.dropboxusercontent.com/u/73642/articles/rpitemp.png)

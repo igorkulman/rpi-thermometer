@@ -2,12 +2,15 @@ var express = require("express");
 var mustacheExpress = require('mustache-express');
 var exec = require("child_process").exec;
 var fs = require("fs");
-var sqlite3 = require("sqlite3").verbose();
+var Synergykit = require("synergykit");
 
-var file = "templog.db";
 var config = JSON.parse(fs.readFileSync("config.json"));
 var deviceId = config.deviceId;
 var port = config.port;
+
+Synergykit.Init(config.synergyKitAppUrl, config.synergyKitKey, {
+    debug: true // You should set it to false in production
+});
 
 console.log("Starting");
 
@@ -33,57 +36,29 @@ app.get("/temperature", function (request, response) {
 });
 
 app.get("/history", function (request, response) {    
-    ensureDbExists(file);
     
-    var db = new sqlite3.Database(file);
-
-    var interval = request.param('timeinterval');
-    if (interval == undefined){
-        interval="24";
-    }
-    db.all("SELECT * FROM temps WHERE timestamp>datetime('now','-"+interval+" hours')", function(err, rows) {         response.render("history", {
-            data: rows,
-            is24: interval == "24",
-	    is6:  interval == "6",
-            is12: interval == "12",
-            is168: interval == "168",
-            is720: interval == "720"
-        });
-    });    
-    db.close();    
 });
 
 app.get("/measure", function (request, response) {
-    ensureDbExists(file);    
 
     getTemperature(function (temp) {
-        var db = new sqlite3.Database(file);
+        var record = Synergykit.Data("Temperature");
+	record.set("Timestamp", new Date().getTime());
+	record.set("Value", temp);
 
-        db.serialize(function() {
-            db.run("INSERT INTO temps values(datetime('now'), ("+temp+"))");      
-        });
-
-        db.close();
-
-        response.send("ok: "+temp.toString());
-    });
+	record.save({
+    success: function(spaceShip, statusCode) {
+        // Your implementation after the space ship is saved
+      	response.send("ok: "+temp.toString());
+    },
+    error: function(error, statusCode) {
+        response.send("fail");
+    }
 });
 
-function ensureDbExists(file){
-    var exists = fs.existsSync(file);
-    if (exists) return;
-
-    console.log("Creating DB file.");
-    fs.openSync(file, "w");
-    
-    var db = new sqlite3.Database(file);
-
-    db.serialize(function() {
-        db.run("CREATE TABLE temps (timestamp DATETIME, temp NUMERIC)");      
+       
     });
-
-    db.close();
-}
+});
 
 function getTemperature(callback) {
     var child = exec("cat /sys/bus/w1/devices/" + deviceId + "/w1_slave", function (error, stdout, stderr) {

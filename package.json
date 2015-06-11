@@ -7,6 +7,7 @@
   "dependencies": {
     "express": "3.x",
     "mustache-express": "^1.2.1",
-    "sqlite3": "~3.0.5"
+    "sqlite3": "~3.0.5",
+    "synergykit": "^2.1.15"
   }
 }

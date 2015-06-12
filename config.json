@@ -2,5 +2,5 @@
 	"port": 8000,
 	"deviceId": "28-000004e23e98",
 	"synergyKitKey": "61cd1d01-efca-405f-904b-75e4a245c4aa",
-	"synergyKitAppUrl": "https://rpi-thermometer.api.synergykit.com"
+	"synergyKitAppUrl": "rpi-thermometer"
 }

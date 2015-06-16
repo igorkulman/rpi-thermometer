@@ -52,7 +52,7 @@ node server.js
 
 ### Recording and showing temperature
 
-You can use the `/measure` endpoint to measure the current temperature and automatically write it to a sqlite3 db file. I suggest you add it to cron.
+You can use the `/measure` endpoint to measure the current temperature and automatically write it to [SynergyKit](https://synergykit.com/). To make it work, edit config.json and fill in your SynergyKit tenant and application key. I suggest you add it to cron.
 
 If you want to see the recorder temeprature chart, visist the `/history` endpoint.
 

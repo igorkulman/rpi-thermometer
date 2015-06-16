@@ -3,9 +3,14 @@
 <html>
 <head>
     <title>
-Room Temperature Logger
+Temperature chart
     </title>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<style>
+body{
+padding-left:20px;
+}
+</style>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -27,20 +32,18 @@ Room Temperature Logger
     </script>
 </head>
 <body>
-<h1>Room Temperature Logger</h1>
-<hr>
+<h1>Temperature chart</h1>
 <form action="/history" method="GET">
         Show the temperature logs for  
-        <select name="timeinterval">
+        <select name="timeinterval" class="form-control" style="width: 200px; display: inline">
 <option value="6" {{#is6}}selected="selected"{{/is6}}>the last 6 hours</option>
 <option value="12" {{#is12}}selected="selected"{{/is12}}>the last 12 hours</option>
 <option value="24" {{#is24}}selected="selected"{{/is24}}>the last 24 hours</option>
 <option value="168" {{#is168}}selected="selected"{{/is168}}>the last week</option>
 <option value="720" {{#is720}}selected="selected"{{/is720}}>the last month</option>
         </select>
-        <input type="submit" value="Display">
+        <input type="submit" value="Display" class="btn btn-default">
     </form>
-<h2>Temperature Chart</h2>
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
 </body>
 </html>

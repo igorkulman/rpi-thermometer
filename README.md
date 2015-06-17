@@ -57,3 +57,7 @@ You can use the `/measure` endpoint to measure the current temperature and autom
 If you want to see the recorder temeprature chart, visist the `/history` endpoint.
 
 ![Raspbery Pi temperature history](https://dl.dropboxusercontent.com/u/73642/articles/rpitemp.png)
+
+### SynergyKit
+
+If you want to save the data to [SynergyKit](https://synergykit.com/) instead of sqlite3, switch to the [synergykit branch](https://github.com/igorkulman/rpi-thermometer/tree/synergykit).

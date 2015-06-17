@@ -3,6 +3,7 @@ var mustacheExpress = require('mustache-express');
 var exec = require("child_process").exec;
 var fs = require("fs");
 var Synergykit = require("synergykit");
+var rpiTemp = require('rpi-temp-module');
 
 var config = JSON.parse(fs.readFileSync("config.json"));
 var deviceId = config.deviceId;
@@ -22,7 +23,7 @@ app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 
 app.get("/", function(request, response) {
-    getTemperature(function(temp) {
+    rpiTemp.getTemperature(deviceId, function(temp) {
         response.render("index", {
             temperature: temp
         });
@@ -30,7 +31,7 @@ app.get("/", function(request, response) {
 });
 
 app.get("/temperature", function(request, response) {
-    getTemperature(function(temp) {
+    rpiTemp.getTemperature(deviceId, function(temp) {
         response.send(temp.toString());
     });
 });
@@ -69,7 +70,7 @@ app.get("/history", function(request, response) {
 
 app.get("/measure", function(request, response) {
 
-    getTemperature(function(temp) {
+    rpiTemp.getTemperature(deviceId, function(temp) {
         var record = Synergykit.Data("Temperature");
         record.set("value", temp);
 
@@ -85,13 +86,5 @@ app.get("/measure", function(request, response) {
 
     });
 });
-
-function getTemperature(callback) {
-    var child = exec("cat /sys/bus/w1/devices/" + deviceId + "/w1_slave", function(error, stdout, stderr) {
-        var tempData = stdout.toString().split('\n')[1];
-        var temp = parseInt(tempData.split("=")[1]) / 1000;
-        callback(temp);
-    });
-}
 
 app.listen(port);

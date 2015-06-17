@@ -1,6 +1,6 @@
 var express = require("express");
 var mustacheExpress = require('mustache-express');
-var exec = require("child_process").exec;
+var rpiTemp = require('rpi-temp-module');
 var fs = require("fs");
 var sqlite3 = require("sqlite3").verbose();
 
@@ -19,7 +19,7 @@ app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 
 app.get("/", function (request, response) {
-    getTemperature(function (temp) {
+    rpiTemp.getTemperature(deviceId, function (temp) {
         response.render("index", {
             temperature: temp
         });
@@ -27,7 +27,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/temperature", function (request, response) {
-    getTemperature(function (temp) {
+    rpiTemp.getTemperature(deviceId, function (temp) {
         response.send(temp.toString());
     });
 });
@@ -56,7 +56,7 @@ app.get("/history", function (request, response) {
 app.get("/measure", function (request, response) {
     ensureDbExists(file);    
 
-    getTemperature(function (temp) {
+    rpiTemp.getTemperature(deviceId, function (temp) {
         var db = new sqlite3.Database(file);
 
         db.serialize(function() {
@@ -83,14 +83,6 @@ function ensureDbExists(file){
     });
 
     db.close();
-}
-
-function getTemperature(callback) {
-    var child = exec("cat /sys/bus/w1/devices/" + deviceId + "/w1_slave", function (error, stdout, stderr) {
-        var tempData = stdout.toString().split('\n')[1];
-        var temp = parseInt(tempData.split("=")[1]) / 1000;
-        callback(temp);
-    });
 }
 
 app.listen(port);

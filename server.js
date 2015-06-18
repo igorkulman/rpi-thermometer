@@ -1,11 +1,10 @@
 var express = require("express");
 var mustacheExpress = require('mustache-express');
-var exec = require("child_process").exec;
 var fs = require("fs");
 var Synergykit = require("synergykit");
 var rpiTemp = require('rpi-temp-module');
 
-var config = JSON.parse(fs.readFileSync("config.json"));
+var config = JSON.parse(fs.readFileSync(__dirname+"/config.json"));
 var deviceId = config.deviceId;
 var port = config.port;
 

@@ -9,7 +9,7 @@ var deviceId = config.deviceId;
 var port = config.port;
 
 Synergykit.Init(config.synergyKitAppUrl, config.synergyKitKey, {
-    debug: false 
+    debug: true
 });
 
 console.log("Starting");
@@ -50,8 +50,9 @@ app.get("/history", function(request, response) {
     query.where()
         .attribute("createdAt")
         .isGreaterThan(myDate.getTime())
+        .top(24*parseInt(interval))
         .find({
-            success: function(rows, statusCode) {
+            success: function(rows, statusCode) {            
                 response.render("history", {
                     data: rows,
                     is24: interval == "24",

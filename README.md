@@ -3,7 +3,7 @@ WebUI for a Raspberry Pi thermometer
 
 WebUI for a Raspberry Pi thermometer writen in Node.js, measurring the temperature in the room.
 
-![Raspberry Pi with the sensor](http://www.kulman.sk/data/content/inset_images/page/rpitemp.jpg)
+![Raspberry Pi with the sensor](https://github.com/igorkulman/rpi-thermometer/raw/readme/rpib.png)
 
 ### Hardware
 
@@ -48,7 +48,7 @@ and run the server
 node server.js
 ```
 
-![Raspberry Pi temperature](https://dl.dropboxusercontent.com/u/73642/articles/rpi.png)
+![Raspberry Pi temperature](https://github.com/igorkulman/rpi-thermometer/raw/readme/rpi.png)
 
 ### Recording and showing temperature
 
@@ -56,4 +56,4 @@ You can use the `/measure` endpoint to measure the current temperature and autom
 
 If you want to see the recorder temeprature chart, visist the `/history` endpoint.
 
-![Raspbery Pi temperature history](https://dl.dropboxusercontent.com/u/73642/articles/rpitemp.png)
+![Raspbery Pi temperature history](https://github.com/igorkulman/rpi-thermometer/raw/readme/rpitemp.pngg)

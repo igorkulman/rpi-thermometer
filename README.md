@@ -56,4 +56,4 @@ You can use the `/measure` endpoint to measure the current temperature and autom
 
 If you want to see the recorder temeprature chart, visist the `/history` endpoint.
 
-![Raspbery Pi temperature history](https://github.com/igorkulman/rpi-thermometer/raw/readme/rpitemp.pngg)
+![Raspbery Pi temperature history](https://github.com/igorkulman/rpi-thermometer/raw/readme/rpitemp.png)
